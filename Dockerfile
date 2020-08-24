@@ -1,9 +1,8 @@
 # Stage 0, "build-stage", based on Node.js, to build and compile the frontend
 FROM node:10.16.3 as build-stage
 WORKDIR /app
-COPY package*.json /app/
+COPY . .
 RUN npm install
-COPY ./ /app/
 ARG configuration=production
 RUN npm run build -- --output-path=./dist/angular-app --configuration $configuration
 
